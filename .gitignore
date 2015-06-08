@@ -10,6 +10,15 @@ obj/*
 Build/*
 build/*
 
+aircraft_carrier_drone/Library/*
+aircraft_carrier_drone/library/*
+aircraft_carrier_drone/Temp/*
+aircraft_carrier_drone/temp/*
+aircraft_carrier_drone/Obj/*
+aircraft_carrier_drone/obj/*
+aircraft_carrier_drone/Build/*
+aircraft_carrier_drone/build/*
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #

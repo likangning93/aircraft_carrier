@@ -1,0 +1,15 @@
+TODO
+
+NEW TODO
+1) gitignore. my goodness you need a gitignore
+2) file loading and file format
+3) intelligent collision detection
+
+1) fix normals on objs in maya -_________-
+2) figure out how to control (start, stop, blend) animations in blender
+	-read tutorials i guess?
+3) figure out how to get the soldier and stuff to walk along splines
+	-need soldier and aircraft prefabs
+	-have them each store strings of coordinates that they will attempt to go ti
+	-extra credit (?) if there's collision detection and appropriate pausing
+

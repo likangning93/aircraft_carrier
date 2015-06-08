@@ -1,0 +1,248 @@
+newmtl kittyHawk:Color_000_002
+illum 4
+Kd 0.80 0.80 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_001_002
+illum 4
+Kd 0.71 0.71 0.71
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_002_002
+illum 4
+Kd 0.62 0.62 0.62
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_003_002
+illum 4
+Kd 0.53 0.53 0.53
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_004_002
+illum 4
+Kd 0.45 0.45 0.45
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_005_002
+illum 4
+Kd 0.36 0.36 0.36
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_006_002
+illum 4
+Kd 0.27 0.27 0.27
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_008_002
+illum 4
+Kd 0.09 0.09 0.09
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_A01_002
+illum 4
+Kd 0.80 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_A11_002
+illum 4
+Kd 0.48 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_A16_002
+illum 4
+Kd 0.32 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_E01_002
+illum 4
+Kd 0.80 0.80 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_E02_002
+illum 4
+Kd 0.80 0.80 0.16
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_H17_002
+illum 4
+Kd 0.06 0.32 0.32
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Color_I01_002
+illum 4
+Kd 0.00 0.00 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Fencing_Mesh_Blue_002
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:FrontColor_004
+illum 4
+Kd 0.80 0.80 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Metal_Corrogated_Shiny_002
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Roofing_Shingles_Asphalt_002
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:Translucent_Glass_Corrugated_002
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 0.90 0.90 0.90
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:White_002
+illum 4
+Kd 0.80 0.80 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_7_004
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Black_1_002
+illum 4
+Kd 0.13 0.13 0.13
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_000_1_002
+illum 4
+Kd 0.04 0.80 0.60
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_002_1_002
+illum 4
+Kd 0.62 0.62 0.62
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_003_1_002
+illum 4
+Kd 0.53 0.53 0.53
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_003_3_002
+illum 4
+Kd 0.58 0.57 0.59
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_007_1_002
+illum 4
+Kd 0.18 0.18 0.18
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_009_1_002
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Color_E02_1_002
+illum 4
+Kd 0.79 0.80 0.59
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08
+newmtl kittyHawk:_Translucent_Glass_Green_Dark_1_002
+illum 4
+Kd 0.19 0.29 0.02
+Ka 0.00 0.00 0.00
+Tf 0.96 0.96 0.96
+Ni 1.00
+Ks 0.17 0.17 0.17
+Ns 96.08

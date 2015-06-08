@@ -1,0 +1,46 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{FFFCC5B2-351C-8A4C-5998-979C2F6FBECF}") = "aircraft_carrier_drone", "Assembly-CSharp.csproj", "{B3BC1C5B-5507-6523-BF7C-3EB70F472356}"
+EndProject
+Project("{FFFCC5B2-351C-8A4C-5998-979C2F6FBECF}") = "aircraft_carrier_drone", "Assembly-CSharp-Editor.csproj", "{BBF0CA0E-2B8B-EECA-C723-5F50543E6011}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3BC1C5B-5507-6523-BF7C-3EB70F472356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3BC1C5B-5507-6523-BF7C-3EB70F472356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3BC1C5B-5507-6523-BF7C-3EB70F472356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3BC1C5B-5507-6523-BF7C-3EB70F472356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBF0CA0E-2B8B-EECA-C723-5F50543E6011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBF0CA0E-2B8B-EECA-C723-5F50543E6011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF0CA0E-2B8B-EECA-C723-5F50543E6011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF0CA0E-2B8B-EECA-C723-5F50543E6011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+															GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.IndentWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
+EndGlobal

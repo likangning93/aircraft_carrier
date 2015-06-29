@@ -8,6 +8,8 @@ public class scene_loader : MonoBehaviour {
 	List<Vector3> waypoints = new List<Vector3>();
 	string[] separators = {",", ", "};
 	string currentPrefab;
+	public Transform soldierPrefab;
+	public Transform planePrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +20,11 @@ public class scene_loader : MonoBehaviour {
 			line = tr.ReadLine();
 		}
 		tr.Close();
+		if (waypoints.Count > 0 ) {
+			if (currentPrefab == "soldier") addSoldierPrefab();
+			if (currentPrefab == "plane") addPlanePrefab();
+			waypoints.Clear();
+		}
 	}
 
 	void handleText(string line) {
@@ -25,9 +32,8 @@ public class scene_loader : MonoBehaviour {
 		Vector3 vec3Try = parseVec3(line);
 		// case of waypoint coordinate
 		if (vec3Try[1] != -1) {
-			Debug.Log(vec3Try[0] + " " + vec3Try[1]);
+			Debug.Log(vec3Try[0] + " " + vec3Try[2]);
 			waypoints.Insert(waypoints.Count, vec3Try);
-			return;
 		}
 		// case of "soldier" or "plane"
 		if (line == "soldier" || line == "plane") {
@@ -43,11 +49,21 @@ public class scene_loader : MonoBehaviour {
 	}
 
 	void addSoldierPrefab() {
-		
+		Transform soldierClone = Instantiate(soldierPrefab);
+		int numWaypoints = waypoints.Count;
+		Vector3[] waypointArray = new Vector3[numWaypoints];
+		waypoints.CopyTo(waypointArray);
+		soldierClone.GetComponent<soldier_motion>().waypoints = waypointArray;
+		soldierClone.GetComponent<soldier_motion>().maxWayPoints = numWaypoints;
 	}
 
 	void addPlanePrefab() {
-
+		Transform planeClone = Instantiate(planePrefab);
+		int numWaypoints = waypoints.Count;
+		Vector3[] waypointArray = new Vector3[numWaypoints];
+		waypoints.CopyTo(waypointArray);
+		planeClone.GetComponent<jetMotion>().waypoints = waypointArray;
+		planeClone.GetComponent<jetMotion>().maxWayPoints = numWaypoints;	
 	}
 
 	Vector3 parseVec3(string line) {

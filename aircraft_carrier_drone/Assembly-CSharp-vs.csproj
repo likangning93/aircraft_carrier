@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\jetMotion.cs" />
+     <Compile Include="Assets\scene_loader.cs" />
      <Compile Include="Assets\soldier\oppositeTurn.cs" />
      <Compile Include="Assets\soldier\soldier_motion.cs" />
      <Compile Include="Assets\soldier\turnCompensate.cs" />

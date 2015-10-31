@@ -3,6 +3,8 @@ using System.Collections;
 
 public class jetMotion : MonoBehaviour {
 	public Vector3[] waypoints = new Vector3[5];
+	public float[] waitpoints = new float[5];
+
 	public int maxWayPoints = 5;
 	public int currWaypoint = 1; // waypoint we're aiming for ATM. these... aren't zero indexed and I'm so ok with that
 	public bool moving = false;

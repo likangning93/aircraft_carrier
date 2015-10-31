@@ -3,6 +3,7 @@ using System.Collections;
 
 public class soldier_motion : MonoBehaviour {
 	public Vector3[] waypoints = new Vector3[5];
+	public float[] waitpoints = new float[5];
 	public int maxWayPoints = 5;
 	public int currWaypoint = 1;
 	public bool moving = false;

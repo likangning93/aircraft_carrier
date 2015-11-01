@@ -123,8 +123,14 @@ public class scene_loader : MonoBehaviour {
 				camwaittimes.Insert(camwaittimes.Count, lineData.w);
 			}
 			else if (line.Contains ("look")) {
-				lookpoints.Insert(lookpoints.Count, new Vector3(lineData.x, lineData.y, lineData.z));
-				looktimes.Insert(looktimes.Count, lineData.w);
+				if (line.Contains("x")) {
+					float nan = float.NaN;
+					lookpoints.Insert(lookpoints.Count, new Vector3(nan, nan, nan));
+					looktimes.Insert(looktimes.Count, lineData.w);
+				} else { // normal lookAt
+					lookpoints.Insert(lookpoints.Count, new Vector3(lineData.x, lineData.y, lineData.z));
+					looktimes.Insert(looktimes.Count, lineData.w);
+				}
 			}
 			line = tr.ReadLine();
 		}
@@ -163,15 +169,15 @@ public class scene_loader : MonoBehaviour {
 		float y; // y coordinate
 		float z; // z coordinate, b/c unity is y up
 		float t = -1.0f; // wait time at this waypoint.
-		if (!float.TryParse(numbers[1], out x))
-			return new Vector4 (0, -1, 0, -1);
-		if (!float.TryParse(numbers[2], out y)) 
-			return new Vector4 (0, -1, 0, -1);
-		if (!float.TryParse(numbers[3], out z)) 
-			return new Vector4 (0, -1, 0, -1);
 		if (numbers.Length == 5) {
-			if (!float.TryParse(numbers[4], out t)) t = -1;
+			if (!float.TryParse(numbers[4], out t)) t = -1.0f;
 		}
+		if (!float.TryParse(numbers[1], out x))
+			return new Vector4 (0, -1, 0, t);
+		if (!float.TryParse(numbers[2], out y)) 
+			return new Vector4 (0, -1, 0, t);
+		if (!float.TryParse(numbers[3], out z)) 
+			return new Vector4 (0, -1, 0, t);
 		return new Vector4(x, y, z, t);
 	}
 }

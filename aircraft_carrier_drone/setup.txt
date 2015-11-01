@@ -38,5 +38,6 @@ camera
     point: -5.3, 11.42, -38.37, 10
     point: -9.3, 7.42, -25.37, 10
     look: -1, 1, 1, 3
+    look: x, x, x, 3    
     look: -50, 0, 2, 4
     look: x, x, x

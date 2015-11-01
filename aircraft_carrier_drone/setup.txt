@@ -1,7 +1,11 @@
 // The flight deck is approximately bounded by the xz coordinates (-200, -35.2)
 // and (132, 40). Positions between xz (100, 24) and (-104, -36) will be in 
 // bounds without falling off the carrier or occluding any fixed structures.
-
+// for soldiers and planes, waypoints are specified as (x, z, wait time)
+// for the  camera, waypoints are specified as (x, y, z, wait time), where y is the up direction.
+// look-at points are specified as (x, y, z, wait time), where time is the time to look at the point.
+// if each of the look's points is an 'x' instead of a number, the camera locks to the direction
+// it was last pointing at relative to the drone.
 
 soldier
     -50,0,2
@@ -29,3 +33,10 @@ plane
     10,50
     132,50
     60,70
+camera
+    point: -8.3, 10.42, -40.37, 5
+    point: -5.3, 11.42, -38.37, 10
+    point: -9.3, 7.42, -25.37, 10
+    look: -1, 1, 1, 3
+    look: -50, 0, 2, 4
+    look: x, x, x

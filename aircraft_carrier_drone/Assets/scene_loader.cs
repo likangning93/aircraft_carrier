@@ -5,16 +5,19 @@ using System.IO;
 using System.Collections.Generic;
 
 public class scene_loader : MonoBehaviour {
+	TextReader tr;
+
 	List<Vector3> waypoints = new List<Vector3>();
 	List<float> waitTimes = new List<float>();
-	string[] separators = {",", ", "};
+	string[] separators = {",", ", ", "point:", "look:"};
 	string currentPrefab;
 	public Transform soldierPrefab;
 	public Transform planePrefab;
+	public Transform cameraPrefab;
 
 	// Use this for initialization
 	void Start () {
-		TextReader tr = new StreamReader("setup.txt");
+		tr = new StreamReader("setup.txt");
 		string line = tr.ReadLine();
 		while (line != null) {
 			handleText(line);
@@ -50,6 +53,11 @@ public class scene_loader : MonoBehaviour {
 			}
 			currentPrefab = line;
 		}
+		// handle case of a camera separately
+		if (line == "camera") {
+			currentPrefab = line;
+			loadCamera();
+		}
 	}
 
 	void addSoldierPrefab() {
@@ -84,8 +92,8 @@ public class scene_loader : MonoBehaviour {
        float x; // x coordinate
        float z; // z coordinate, b/c unity is y up
 	   float t = -1.0f; // wait time at this waypoint.
-       if (!float.TryParse(numbers[0], out x)) return new Vector3(0, -1, 0);
-       if (!float.TryParse(numbers[1], out z)) return new Vector3(0, -1, 0);
+       if (!float.TryParse(numbers[0], out x)) return new Vector4(0, -1, 0, -1);
+       if (!float.TryParse(numbers[1], out z)) return new Vector4(0, -1, 0, -1);
 	   if (numbers.Length == 3) {
 			if (!float.TryParse(numbers[2], out t)) t = -1;
 		}
@@ -95,5 +103,75 @@ public class scene_loader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void loadCamera() {
+		String line = tr.ReadLine();
+		List<Vector3> camwaypoints = new List<Vector3>();
+		List<float> camwaittimes = new List<float>();
+		List<Vector3> lookpoints = new List<Vector3>();
+		List<float> looktimes = new List<float>();
+
+		while (line != null) {
+			if (line == "soldier" || line == "jet") {
+				currentPrefab = line;
+				break;
+			}
+			Vector4 lineData = handleCameraLine(line);
+			if (line.Contains("point")) {
+				camwaypoints.Insert(camwaypoints.Count, new Vector3(lineData.x, lineData.y, lineData.z));
+				camwaittimes.Insert(camwaittimes.Count, lineData.w);
+			}
+			else if (line.Contains ("look")) {
+				lookpoints.Insert(lookpoints.Count, new Vector3(lineData.x, lineData.y, lineData.z));
+				looktimes.Insert(looktimes.Count, lineData.w);
+			}
+			line = tr.ReadLine();
+		}
+
+		// we're done loading? instantiate and add the camera
+		Transform cameraClone = Instantiate(cameraPrefab);
+		int numWaypoints = camwaypoints.Count;
+		Vector3[] waypointArray = new Vector3[numWaypoints];
+		camwaypoints.CopyTo(waypointArray);
+		float[] waitpointArray = new float[numWaypoints];
+		camwaittimes.CopyTo(waitpointArray);
+
+		cameraClone.GetComponent<cameraMotion>().waypoints = waypointArray;
+		cameraClone.GetComponent<cameraMotion>().waitpoints = waitpointArray;
+		cameraClone.GetComponent<cameraMotion>().maxWaypoints = numWaypoints;
+
+		int numLookPoints = lookpoints.Count;
+		Vector3[] lookpointArray = new Vector3[numLookPoints];
+		lookpoints.CopyTo(lookpointArray);
+		float[] looktimeArray = new float[numLookPoints];
+		looktimes.CopyTo(looktimeArray);
+
+		cameraClone.GetComponent<cameraMotion>().lookpoints = lookpointArray;
+		cameraClone.GetComponent<cameraMotion>().looktimes = looktimeArray;
+		cameraClone.GetComponent<cameraMotion>().maxLookPoints = numLookPoints;
+	}
+
+
+	Vector4 handleCameraLine(String line) {
+		string[] numbers = line.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+		if (numbers.Length < 3 || line.Contains("//")) {
+			return new Vector4 (0, -1, 0, -1); // aka bad vec3
+		}
+		// we added a specifier in front, so numbers is of length 5 in the normal case.
+		float x; // x coordinate
+		float y; // y coordinate
+		float z; // z coordinate, b/c unity is y up
+		float t = -1.0f; // wait time at this waypoint.
+		if (!float.TryParse(numbers[1], out x))
+			return new Vector4 (0, -1, 0, -1);
+		if (!float.TryParse(numbers[2], out y)) 
+			return new Vector4 (0, -1, 0, -1);
+		if (!float.TryParse(numbers[3], out z)) 
+			return new Vector4 (0, -1, 0, -1);
+		if (numbers.Length == 5) {
+			if (!float.TryParse(numbers[4], out t)) t = -1;
+		}
+		return new Vector4(x, y, z, t);
 	}
 }

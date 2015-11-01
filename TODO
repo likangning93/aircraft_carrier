@@ -1,7 +1,7 @@
 TODO
 
 10/31/2015
--add pausing to soldiers and jets. make sure a default is handled
+-add pausing to soldiers and jets. make sure a default is handled [done]
 -add waypoints, look at points, and panning/velocity controls to the drone
 -add an ocean
 -send to Xiaowei

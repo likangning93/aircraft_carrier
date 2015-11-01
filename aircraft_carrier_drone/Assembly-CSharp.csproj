@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\cameraMotion.cs" />
      <Compile Include="Assets\jetMotion.cs" />
      <Compile Include="Assets\scene_loader.cs" />
      <Compile Include="Assets\soldier\oppositeTurn.cs" />

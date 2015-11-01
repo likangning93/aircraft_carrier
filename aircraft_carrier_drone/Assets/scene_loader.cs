@@ -122,7 +122,7 @@ public class scene_loader : MonoBehaviour {
 				camwaypoints.Insert(camwaypoints.Count, new Vector3(lineData.x, lineData.y, lineData.z));
 				camwaittimes.Insert(camwaittimes.Count, lineData.w);
 			}
-			else if (line.Contains ("look")) {
+			else if (line.Contains ("look") && !line.Contains("//")) {
 				if (line.Contains("x")) {
 					float nan = float.NaN;
 					lookpoints.Insert(lookpoints.Count, new Vector3(nan, nan, nan));

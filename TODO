@@ -1,8 +1,18 @@
 TODO
 
+OVERHAUL:
+-add a generic "moveable" type
+-change motion scripts to a series of commands:
+	-goto
+	-lookAt
+	-setSpeed
+	-setTurningSpeed
+	-gotoWhileLookingAt (drone only)
+-add an ocean
+
 10/31/2015
 -add pausing to soldiers and jets. make sure a default is handled [done]
--add waypoints, look at points, and panning/velocity controls to the drone
+-add waypoints, look at points, and panning/velocity controls to the drone [done]
 -add an ocean
 -send to Xiaowei
 

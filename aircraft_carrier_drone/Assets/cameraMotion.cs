@@ -12,9 +12,9 @@ public class cameraMotion : MonoBehaviour {
 
 	public int nextWaypoint = 1; // waypoint we're moving to next
 	public int nextLookAt = 1; // next lookAt
-	public float distanceEpsilon = 0.1f;
+	public float distanceEpsilon = 0.01f;
 	public float speed = 0.1f; // for translation
-	public float turningSpeed = 0.03f; // in radians. for looking
+	public float turningSpeed = 0.06f; // in radians. for looking
 
 	public float currPositionWait = -1.0f;
 	public float currLookAtWait = -1.0f;
@@ -30,7 +30,7 @@ public class cameraMotion : MonoBehaviour {
 		currPositionWait = waitpoints[0];
 		currLookAtWait = looktimes[0];
 		if (lookpoints.Length > 0) {
-			transform.LookAt (lookpoints [0]);
+			transform.LookAt (lookpoints[0]);
 		} else {
 			transform.LookAt(new Vector3(0, 0, 0));
 		}
@@ -42,25 +42,52 @@ public class cameraMotion : MonoBehaviour {
 	void FixedUpdate() {
 		if (Input.GetKey (KeyCode.Space))
 			moving = true;
-		if (!moving)
+		if (!moving) {
+			lastFrameTime = Time.time;
 			return;
+		}
 
 		if (currLookAtWait > 0.0f) { // wait
 			currLookAtWait -= (Time.time - lastFrameTime);
-			// update the lookAt, in case the camera is moving
-			if (!float.IsNaN(lookpoints[nextLookAt - 1].x)) {
-				transform.LookAt(lookpoints[nextLookAt - 1]);
+		} else if (nextLookAt < lookpoints.Length) { // change lookAt
+			// check if we're moving to look at something or if camera direction is fixed.
+			if (!float.IsNaN(lookpoints[nextLookAt].x)) {
+				// check if we've arrived at the objective lookAt
+				Vector3 goalDirection = (lookpoints[nextLookAt] - transform.localPosition).normalized;
+
+				float cosAngle = Vector3.Dot(transform.forward, goalDirection);
+				float angle = Mathf.Acos(cosAngle);
+				if (Mathf.Abs(angle) < distanceEpsilon) { // arrived at goal lookAt
+					// update wait time
+					currLookAtWait = looktimes[nextLookAt];
+					// start looking at the next waypoint
+					transform.LookAt(lookpoints[nextLookAt]);
+					nextLookAt++;
+				} else {
+					// compute a new direction based on rotational velocity max and lookat
+					float vel = turningSpeed;
+					if (vel > angle) {
+						vel = angle;
+					}
+					Vector3 axis = Vector3.Cross(transform.forward, goalDirection);
+
+					transform.RotateAround(transform.localPosition, axis, vel);
+					transform.LookAt(transform.localPosition + transform.forward); // preserve up direction
+				}
+			} else {
+				currLookAtWait = looktimes[nextLookAt];
+				nextLookAt++;
 			}
-		} else { // change lookAt
-			// check if we've arrived at the objective lookAt
-
-			// otherwise, compute a new temporary lookAt that satisfies the rotational velocity
-
 		}
+		// update the lookAt, in case the camera is moving
+		if (!float.IsNaN(lookpoints[nextLookAt - 1].x)) {
+			transform.LookAt(lookpoints[nextLookAt - 1]);
+		}
+
 
 		if (currPositionWait > 0.0f && nextWaypoint < waypoints.Length) {
 			currPositionWait -= (Time.time - lastFrameTime);
-		} else { // move
+		} else if (nextWaypoint < waypoints.Length) { // move
 			// check if we've arrived at the objective position
 			Vector3 dist = waypoints[nextWaypoint] - transform.localPosition;
 			float distLength = dist.magnitude;

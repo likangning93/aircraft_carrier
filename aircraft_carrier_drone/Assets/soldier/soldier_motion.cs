@@ -4,12 +4,15 @@ using System.Collections;
 public class soldier_motion : MonoBehaviour {
 	public Vector3[] waypoints = new Vector3[5];
 	public float[] waitpoints = new float[5];
+
 	public int maxWayPoints = 5;
 	public int currWaypoint = 1;
 	public bool moving = false;
 	public float distanceEpsilon = 0.1f;
 	public float speed = 0.38f;
 	public float turningSpeed = 0.03f;
+	public float currWait = -1.0f;
+	public float lastFrameTime = 0.0f;
 
 	// for turning
 	private float realTurningSpeed;
@@ -23,6 +26,7 @@ public class soldier_motion : MonoBehaviour {
 	void Start () {
 		// start the soldier at the first waypoint, facing towards the second
 		transform.localPosition = waypoints[0];
+		currWait = waitpoints [0];
 		transform.LookAt (waypoints [1]);
 		currWaypoint = 1;
 		anim = GetComponent<Animator> ();
@@ -37,7 +41,7 @@ public class soldier_motion : MonoBehaviour {
 	void FixedUpdate() {
 		if (Input.GetKey (KeyCode.Space))
 			moving = true;
-
+		
 		if (currWaypoint == maxWayPoints) {
 			halt();
 			return; // don't do anything at the last waypoint
@@ -48,6 +52,15 @@ public class soldier_motion : MonoBehaviour {
 				halt ();
 				return; // don't do anything at the last waypoint
 			}
+
+			// don't do anything while waiting
+			if (currWait >= 0.0f) {
+				currWait -= (Time.time - lastFrameTime);
+				lastFrameTime = Time.time;
+				halt ();
+				return;
+			}
+
 
 			Vector3 dist = waypoints[currWaypoint] - transform.localPosition;
 			float distLength = dist.magnitude;
@@ -83,6 +96,9 @@ public class soldier_motion : MonoBehaviour {
 			// check if we've reached a waypoint
 			if (distLength <= distanceEpsilon && currWaypoint < maxWayPoints)
 			{
+				// update current wait time
+				currWait = waitpoints[currWaypoint];
+
 				currWaypoint++;
 				halt ();
 				if (currWaypoint == maxWayPoints) return;
@@ -99,7 +115,6 @@ public class soldier_motion : MonoBehaviour {
 				realTurningSpeed = travelAngle / (float) turningSteps;
 				realTurningSpeed = Mathf.Rad2Deg * realTurningSpeed; // because of something with rotatearound. booo hisisss
 				axis = Vector3.Cross(transform.forward, goalDirection);
-				return;
 			}
 			
 			// otherwise move closer
@@ -113,6 +128,7 @@ public class soldier_motion : MonoBehaviour {
 				anim.SetBool("IsTurningLeft", false);
 			}
 		}
+		lastFrameTime = Time.time;
 	}
 
 	void halt()

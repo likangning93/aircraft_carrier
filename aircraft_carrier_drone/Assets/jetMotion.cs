@@ -11,6 +11,8 @@ public class jetMotion : MonoBehaviour {
 	public float distanceEpsilon = 0.1f;
 	public float speed = 0.1f;
 	public float turningSpeed = 0.03f;
+	public float currWait = -1.0f;
+	public float lastFrameTime = 0.0f;
 
 	// for turning
 	private float realTurningSpeed;
@@ -25,6 +27,7 @@ public class jetMotion : MonoBehaviour {
 		transform.localPosition = waypoints[0];
 		transform.LookAt (waypoints [1]);
 		currWaypoint = 1;
+		currWait = waitpoints [0];
 	}
 	
 	// Update is called once per frame
@@ -39,6 +42,14 @@ public class jetMotion : MonoBehaviour {
 		if (currWaypoint == maxWayPoints) return; // don't do anything at the last waypoint
 
 		if (moving) {
+
+			// don't do anything while waiting
+			if (currWait >= 0.0f) {
+				currWait -= (Time.time - lastFrameTime);
+				lastFrameTime = Time.time;
+				return;
+			}
+
 			Vector3 dist = waypoints[currWaypoint] - transform.localPosition;
 			float distLength = dist.magnitude;
 
@@ -61,6 +72,9 @@ public class jetMotion : MonoBehaviour {
 			// check if we've reached a waypoint
 			if (distLength <= distanceEpsilon)// && currWaypoint < maxWayPoints)
 			{
+				// update current wait time
+				currWait = waitpoints[currWaypoint];
+
 				currWaypoint++;
 				if (currWaypoint > maxWayPoints - 1) return;
 				// turnnnnnn
@@ -75,7 +89,6 @@ public class jetMotion : MonoBehaviour {
 				realTurningSpeed = travelAngle / (float) turningSteps;
 				realTurningSpeed = Mathf.Rad2Deg * realTurningSpeed; // because of something with rotatearound. booo hisisss
 				axis = Vector3.Cross(transform.forward, goalDirection);
-				return;
 			}
 			
 			// otherwise move closer
@@ -86,5 +99,7 @@ public class jetMotion : MonoBehaviour {
 				transform.LookAt(transform.localPosition + dir);
 			}
 		}
+		lastFrameTime = Time.time;
+
 	}
 }

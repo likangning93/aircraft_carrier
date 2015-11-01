@@ -78,14 +78,16 @@ public class scene_loader : MonoBehaviour {
 
 	Vector4 parseVec4(string line) {
        string[] numbers = line.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-       if (numbers.Length != 2) return new Vector4(0, -1, 0, 0); // aka bad vec3
+       if (numbers.Length < 2 || line.Contains("//")) {
+			return new Vector4 (0, -1, 0, -1); // aka bad vec3
+		}
        float x; // x coordinate
        float z; // z coordinate, b/c unity is y up
 	   float t = -1.0f; // wait time at this waypoint.
        if (!float.TryParse(numbers[0], out x)) return new Vector3(0, -1, 0);
        if (!float.TryParse(numbers[1], out z)) return new Vector3(0, -1, 0);
-	   if (numbers.Length == 4) {
-			if (!float.TryParse(numbers[2], out t)) t = 0;
+	   if (numbers.Length == 3) {
+			if (!float.TryParse(numbers[2], out t)) t = -1;
 		}
        return new Vector4(x, 0, z, t);
 	}

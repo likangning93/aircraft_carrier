@@ -60,6 +60,7 @@
      <Compile Include="Assets\spline scripts\SplineDecorator.cs" />
      <Compile Include="Assets\spline scripts\SplineWalker.cs" />
      <Compile Include="Assets\spline scripts\SplineWalkerMode.cs" />
+     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

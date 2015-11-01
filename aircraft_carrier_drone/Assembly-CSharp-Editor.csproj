@@ -49,6 +49,7 @@
      <Compile Include="Assets\Editor\BezierCurveInspector.cs" />
      <Compile Include="Assets\Editor\BezierSplineInspector.cs" />
      <Compile Include="Assets\Editor\LineInspector.cs" />
+     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
